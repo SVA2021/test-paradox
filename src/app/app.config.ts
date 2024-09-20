@@ -10,6 +10,8 @@ import { errorInterceptor } from '@core/interceptors/error.interceptor';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { appStore } from '@store/app.reducers';
+import { appEffects } from '@store/app.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,8 +20,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     NG_EVENT_PLUGINS,
     provideHttpClient(withInterceptors([baseUrlInterceptor, errorInterceptor])),
-    provideStore(),
-    provideEffects(),
+    provideStore(appStore),
+    provideEffects(appEffects),
     provideStoreDevtools({
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode
