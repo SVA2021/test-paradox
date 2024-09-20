@@ -1,3 +1,4 @@
 import { TagsEffects } from '@store/tags/tag.effects';
+import { NoticesEffects } from '@store/notices/notice.effects';
 
-export const appEffects = [TagsEffects];
+export const appEffects = [NoticesEffects, TagsEffects];
