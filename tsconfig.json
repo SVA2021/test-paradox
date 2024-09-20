@@ -19,6 +19,14 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/app/components/*"],
+      "@core/*": ["./src/app/core/*"],
+      "@environments/*": ["./src/environments/*"],
+      "@pages/*": ["./src/app/pages/*"],
+      "@store/*": ["./src/app/store/*"],
+    },
     "lib": [
       "ES2022",
       "dom"
