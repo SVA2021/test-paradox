@@ -1,1 +1,20 @@
-<p>tags-page works!</p>
+<div tuiHeader="xl">
+  <h1 tuiTitle>Tags</h1>
+</div>
+<div class="page-wrapper">
+  <ng-container *ngIf="tags$ | async as tags; else loader">
+    @for (tag of tags; track tag.id) {
+      <div>
+        <p>{{ tag.id }}</p>
+        <p>{{ tag.color }}</p>
+        <p>{{ tag.name }}</p>
+        <p>{{ tag.description }}</p>
+      </div>
+    } @empty {
+      <app-empty-list></app-empty-list>
+    }
+  </ng-container>
+</div>
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
