@@ -1,0 +1,32 @@
+<header tuiHeader>
+  <h3
+    tuiTitle
+    class="dialog-title"
+  >
+    Are you sure want to delete ?
+    <span *ngIf="!!content">{{ content }}</span>
+  </h3>
+</header>
+
+<div class="dialog-buttons">
+  <button
+    appearance="secondary"
+    iconStart="@tui.pencil"
+    size="s"
+    tuiButton
+    type="button"
+    (click)="cancel()"
+  >
+    Cancel
+  </button>
+  <button
+    appearance="accent"
+    iconStart="@tui.trash-2"
+    size="s"
+    tuiButton
+    type="button"
+    (click)="confirm()"
+  >
+    Delete
+  </button>
+</div>
