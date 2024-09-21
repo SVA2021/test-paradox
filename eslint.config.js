@@ -32,6 +32,7 @@ module.exports = tseslint.config(
           style: 'kebab-case',
         },
       ],
+      '@ngrx/avoid-dispatching-multiple-actions-sequentially': ['off'],
     },
   },
   {
