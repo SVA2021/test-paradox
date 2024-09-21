@@ -1,17 +1,18 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TuiHeader } from '@taiga-ui/layout';
-import { TuiTitle } from '@taiga-ui/core';
+import { TuiButton, TuiTitle } from '@taiga-ui/core';
 import { Store } from '@ngrx/store';
 import { selectTags } from '@store/tags/tag.selectors';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { LoaderComponent } from '@components/loader/loader.component';
 import { EmptyListComponent } from '@components/empty-list/empty-list.component';
+import { TagCardComponent } from '@components/tag-card/tag-card.component';
 
 @Component({
   selector: 'app-tags-page',
   standalone: true,
-  imports: [TuiHeader, TuiTitle, NgIf, AsyncPipe, LoaderComponent, EmptyListComponent],
+  imports: [TuiHeader, TuiTitle, NgIf, AsyncPipe, LoaderComponent, EmptyListComponent, TagCardComponent, TuiButton],
   templateUrl: './tags-page.component.html',
   styleUrl: './tags-page.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,

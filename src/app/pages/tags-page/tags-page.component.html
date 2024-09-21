@@ -1,19 +1,26 @@
-<div tuiHeader="xl">
-  <h1 tuiTitle>Tags</h1>
-</div>
 <div class="page-wrapper">
-  <ng-container *ngIf="tags$ | async as tags; else loader">
-    @for (tag of tags; track tag.id) {
-      <div>
-        <p>{{ tag.id }}</p>
-        <p>{{ tag.color }}</p>
-        <p>{{ tag.name }}</p>
-        <p>{{ tag.description }}</p>
-      </div>
-    } @empty {
-      <app-empty-list></app-empty-list>
-    }
-  </ng-container>
+  <div tuiHeader="xl">
+    <h1 tuiTitle="m">Tags</h1>
+  </div>
+  <button
+    class="add-button"
+    iconStart="@tui.circle-plus"
+    size="m"
+    tuiButton
+    type="button"
+  >
+    Add new tag
+  </button>
+
+  <div class="list">
+    <ng-container *ngIf="tags$ | async as tags; else loader">
+      @for (tag of tags; track tag.id) {
+        <app-tag-card [tag]="tag"></app-tag-card>
+      } @empty {
+        <app-empty-list></app-empty-list>
+      }
+    </ng-container>
+  </div>
 </div>
 <ng-template #loader>
   <app-loader></app-loader>
