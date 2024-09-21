@@ -1,0 +1,48 @@
+<header tuiHeader>
+  <h2 tuiTitle>{{ isEdit ? 'Update' : 'Create' }} tag</h2>
+</header>
+<form
+  class="tag-form"
+  [formGroup]="tagForm"
+>
+  <tui-input
+    formControlName="name"
+    [tuiTextfieldCleaner]="true"
+  >
+    Add name
+    <input
+      tuiTextfieldLegacy
+      type="text"
+    />
+  </tui-input>
+  <tui-textarea
+    formControlName="description"
+    [expandable]="true"
+  >
+    Add description
+  </tui-textarea>
+  <tui-input-color
+    formControlName="color"
+    [colors]="palette"
+  >
+    Background color
+  </tui-input-color>
+</form>
+<div class="tag-buttons">
+  <button
+    appearance="secondary"
+    tuiButton
+    type="button"
+    (click)="closeDialog()"
+  >
+    Cancel
+  </button>
+  <button
+    appearance="primary"
+    tuiButton
+    type="button"
+    (click)="submit()"
+  >
+    Submit
+  </button>
+</div>
