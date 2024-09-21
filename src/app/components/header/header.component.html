@@ -1,0 +1,20 @@
+<tui-tabs-with-more>
+  @for (route of routes; track route.id) {
+    <a
+      *tuiItem
+      class="route-wrapper"
+      routerLinkActive="active"
+      tuiTab
+      [routerLink]="route.id"
+    >
+      <img
+        class="route-icon"
+        [alt]="route.title"
+        [src]="route.icon | tuiIcon"
+      />
+      <span class="route-title">
+        {{ route.title }}
+      </span>
+    </a>
+  }
+</tui-tabs-with-more>
