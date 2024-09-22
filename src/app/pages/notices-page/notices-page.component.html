@@ -1,1 +1,28 @@
-<p>notices-page works!</p>
+<div class="page-wrapper">
+  <div tuiHeader="xl">
+    <h1 tuiTitle="m">Notices</h1>
+  </div>
+  <button
+    class="add-button"
+    iconStart="@tui.circle-plus"
+    size="m"
+    tuiButton
+    type="button"
+    (click)="addNotice()"
+  >
+    Add new notice
+  </button>
+
+  <div class="list">
+    <ng-container *ngIf="notices$ | async as notices; else loader">
+      @for (notice of notices; track notice.id) {
+        <app-notice-card [notice]="notice"></app-notice-card>
+      } @empty {
+        <app-empty-list></app-empty-list>
+      }
+    </ng-container>
+  </div>
+</div>
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

@@ -1,1 +1,65 @@
-<p>notice-form works!</p>
+<header tuiHeader>
+  <h2 tuiTitle>{{ isEdit ? 'Update' : 'Create' }} notice</h2>
+</header>
+<form
+  class="notice-form"
+  [formGroup]="noticeForm"
+>
+  <tui-input
+    formControlName="title"
+    [tuiTextfieldCleaner]="true"
+  >
+    Add name
+    <input
+      tuiTextfieldLegacy
+      type="text"
+    />
+  </tui-input>
+  <tui-textarea
+    formControlName="description"
+    [expandable]="true"
+  >
+    Add description
+  </tui-textarea>
+  <tui-multi-select
+    formControlName="tags"
+    [rows]="1"
+    [tuiTextfieldLabelOutside]="true"
+  >
+    Add tags
+    <tui-data-list-wrapper
+      *tuiDataList
+      [itemContent]="itemContent"
+      [items]="tags | tuiHideSelected"
+    />
+  </tui-multi-select>
+</form>
+<div class="notice-buttons">
+  <button
+    appearance="secondary"
+    tuiButton
+    type="button"
+    (click)="closeDialog()"
+  >
+    Cancel
+  </button>
+  <button
+    appearance="primary"
+    tuiButton
+    type="button"
+    (click)="submit()"
+  >
+    Submit
+  </button>
+</div>
+
+<ng-template
+  #itemContent
+  let-data
+>
+  {{ data.name }}
+  <span
+    class="colorbox"
+    [style.background-color]="data.color"
+  ></span>
+</ng-template>

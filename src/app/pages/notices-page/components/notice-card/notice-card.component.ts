@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, inject, INJECTOR, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  INJECTOR,
+  Input,
+  OnChanges,
+  OnDestroy,
+  SimpleChanges,
+} from '@angular/core';
 import { Notice } from '@core/models/notice.model';
 import { TuiButton, TuiDialogService, TuiSurface, TuiTitle } from '@taiga-ui/core';
 import { Store } from '@ngrx/store';
@@ -20,7 +29,7 @@ import { NoticeCardTagsComponent } from '@pages/notices-page/components/notice-c
   styleUrl: './notice-card.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NoticeCardComponent {
+export class NoticeCardComponent implements OnDestroy, OnChanges {
   @Input() notice!: Notice;
 
   private readonly dialogs = inject(TuiDialogService);
@@ -28,6 +37,19 @@ export class NoticeCardComponent {
   private readonly noticesApiService = inject(NoticesApiService);
   private readonly store = inject(Store);
   private readonly destroy$ = new ReplaySubject(1);
+
+  tagIds: string[] = [];
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['notice']?.previousValue !== changes['notice'].currentValue) {
+      this.tagIds = this.notice ? [...this.notice.tags] : [];
+    }
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(null);
+    this.destroy$.complete();
+  }
 
   delete() {
     this.dialogs
