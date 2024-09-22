@@ -1,0 +1,16 @@
+<ng-container *ngIf="tags$ | async as tags">
+  <div
+    *ngIf="tags.length"
+    class="tags-wrapper"
+  >
+    @for (tag of tags; track tag.id) {
+      <div
+        class="tag"
+        [style.background-color]="tag.color"
+        [tuiHint]="tag.description"
+      >
+        {{ tag.name }}
+      </div>
+    }
+  </div>
+</ng-container>

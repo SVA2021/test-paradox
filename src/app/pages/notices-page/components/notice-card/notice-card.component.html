@@ -1,0 +1,41 @@
+<div
+  tuiCardLarge
+  tuiSurface="elevated"
+  class="tag-card"
+>
+  <header tuiHeader>
+    <h2 tuiTitle>{{ notice.title }}</h2>
+    <div class="tag-buttons">
+      <button
+        appearance="secondary"
+        iconStart="@tui.pencil"
+        size="s"
+        tuiIconButton
+        type="button"
+        (click)="edit(notice)"
+      >
+        Edit
+      </button>
+      <button
+        appearance="destructive"
+        iconStart="@tui.trash-2"
+        size="s"
+        tuiIconButton
+        type="button"
+        (click)="delete()"
+      >
+        Delete
+      </button>
+    </div>
+  </header>
+
+  <app-notice-card-tags [tagIds]="notice.tags"></app-notice-card-tags>
+
+  <span
+    tuiFade="vertical"
+    tuiSubtitle
+    class="fade-vertical"
+  >
+    {{ notice.description }}
+  </span>
+</div>
