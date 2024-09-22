@@ -1,1 +1,28 @@
-<p>reminders-page works!</p>
+<div class="page-wrapper">
+  <div tuiHeader="xl">
+    <h1 tuiTitle="m">Reminders</h1>
+  </div>
+  <button
+    class="add-button"
+    iconStart="@tui.circle-plus"
+    size="m"
+    tuiButton
+    type="button"
+    (click)="addReminder()"
+  >
+    Add new reminder
+  </button>
+
+  <div class="list">
+    <ng-container *ngIf="reminders$ | async as reminders; else loader">
+      @for (reminder of reminders; track reminder.id) {
+        <app-reminder-card [reminder]="reminder"></app-reminder-card>
+      } @empty {
+        <app-empty-list></app-empty-list>
+      }
+    </ng-container>
+  </div>
+</div>
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

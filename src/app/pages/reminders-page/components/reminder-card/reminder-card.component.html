@@ -1,0 +1,52 @@
+<div
+  tuiCardLarge
+  tuiSurface="elevated"
+  class="reminder-card"
+>
+  <header tuiHeader>
+    <h2 tuiTitle>{{ reminder.title }}</h2>
+    <div class="reminder-buttons">
+      <button
+        appearance="secondary"
+        iconStart="@tui.pencil"
+        size="s"
+        tuiIconButton
+        type="button"
+        (click)="edit(reminder)"
+      >
+        Edit
+      </button>
+      <button
+        appearance="destructive"
+        iconStart="@tui.trash-2"
+        size="s"
+        tuiIconButton
+        type="button"
+        (click)="delete()"
+      >
+        Delete
+      </button>
+    </div>
+  </header>
+
+  <span
+    *ngIf="!!reminder.description"
+    tuiFade="vertical"
+    tuiSubtitle
+    class="fade-vertical"
+  >
+    {{ reminder.description }}
+  </span>
+
+  <footer>
+    <img
+      *ngIf="reminder.withAlarm && currentTimestamp <= reminder.timestamp"
+      class="reminder-bell"
+      alt="alarm activated"
+      [src]="'@tui.bell-ring' | tuiIcon"
+    />
+    <span [class.error]="currentTimestamp > reminder.timestamp">
+      {{ reminder.timestamp | date: 'short' }}
+    </span>
+  </footer>
+</div>
