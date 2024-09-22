@@ -1,13 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  inject,
-  Input,
-  OnChanges,
-  OnDestroy,
-  SimpleChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectTags } from '@store/tags/tag.selectors';
 import { map, ReplaySubject, takeUntil } from 'rxjs';
@@ -26,7 +17,6 @@ import { TuiHintDirective } from '@taiga-ui/core';
 export class NoticeCardTagsComponent implements OnDestroy, OnChanges {
   @Input() tagIds!: string[];
 
-  private readonly cdr = inject(ChangeDetectorRef);
   private readonly store = inject(Store);
   private readonly destroy$ = new ReplaySubject(1);
   tags$ = this.store.select(selectTags).pipe(

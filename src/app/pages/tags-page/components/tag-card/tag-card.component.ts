@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, INJECTOR, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, INJECTOR, Input, OnDestroy } from '@angular/core';
 import { Tag } from '@core/models/tag.model';
 import { TuiCardLarge, TuiHeader } from '@taiga-ui/layout';
 import { TuiButton, TuiDialogService, TuiSurface, TuiTitle } from '@taiga-ui/core';
@@ -19,7 +19,7 @@ import { ReplaySubject, takeUntil } from 'rxjs';
   styleUrl: './tag-card.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TagCardComponent {
+export class TagCardComponent implements OnDestroy {
   @Input() tag!: Tag;
 
   private readonly dialogs = inject(TuiDialogService);
@@ -27,6 +27,11 @@ export class TagCardComponent {
   private readonly tagsApiService = inject(TagsApiService);
   private readonly store = inject(Store);
   private readonly destroy$ = new ReplaySubject(1);
+
+  ngOnDestroy() {
+    this.destroy$.next(null);
+    this.destroy$.complete();
+  }
 
   deleteTag() {
     this.dialogs

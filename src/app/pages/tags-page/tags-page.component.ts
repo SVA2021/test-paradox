@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, INJECTOR } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, INJECTOR, OnDestroy } from '@angular/core';
 import { TuiHeader } from '@taiga-ui/layout';
 import { TuiButton, TuiDialogService, TuiTitle } from '@taiga-ui/core';
 import { Store } from '@ngrx/store';
@@ -19,12 +19,17 @@ import { TagFormComponent } from '@pages/tags-page/components/tag-form/tag-form.
   styleUrl: './tags-page.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TagsPageComponent {
+export class TagsPageComponent implements OnDestroy {
   private readonly dialogs = inject(TuiDialogService);
   private readonly injector = inject(INJECTOR);
   private readonly store = inject(Store);
   private readonly destroy$ = new ReplaySubject(1);
   tags$ = this.store.select(selectTags).pipe(takeUntil(this.destroy$));
+
+  ngOnDestroy() {
+    this.destroy$.next(null);
+    this.destroy$.complete();
+  }
 
   addTag() {
     this.dialogs
