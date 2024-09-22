@@ -8,7 +8,7 @@ import { ConfirmDeleteDialogComponent } from '@components/confirm-delete-dialog/
 import { Store } from '@ngrx/store';
 import { TagActions } from '@store/tags/tag.actions';
 import { TagsApiService } from '@core/services/api/tags-api.service';
-import { TagFormComponent } from '@components/tag-form/tag-form.component';
+import { TagFormComponent } from '@pages/tags-page/components/tag-form/tag-form.component';
 import { ReplaySubject, takeUntil } from 'rxjs';
 
 @Component({

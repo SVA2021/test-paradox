@@ -7,9 +7,9 @@ import { ReplaySubject, takeUntil } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { LoaderComponent } from '@components/loader/loader.component';
 import { EmptyListComponent } from '@components/empty-list/empty-list.component';
-import { TagCardComponent } from '@components/tag-card/tag-card.component';
+import { TagCardComponent } from '@pages/tags-page/components/tag-card/tag-card.component';
 import { PolymorpheusComponent } from '@taiga-ui/polymorpheus';
-import { TagFormComponent } from '@components/tag-form/tag-form.component';
+import { TagFormComponent } from '@pages/tags-page/components/tag-form/tag-form.component';
 
 @Component({
   selector: 'app-tags-page',
