@@ -1,0 +1,50 @@
+{
+  "notices": [
+    {
+      "id": "1820428f-d02f-4a70-9811-6187636fa124",
+      "title": "first notice",
+      "description": "add something here 2",
+      "tags": [
+        "dc7f9a53-701f-4448-87dc-4d2152d794ab"
+      ]
+    },
+    {
+      "id": "f35f55be-48c9-4c5b-9f68-e1ad43e9c789",
+      "title": "first long text notice",
+      "description": "here will be some long description i hope",
+      "tags": [
+        "dc7f9a53-701f-4448-87dc-4d2152d794ab"
+      ]
+    }
+  ],
+  "reminders": [
+    {
+      "id": "d1a0abb3-f1df-4b56-b3a8-5e91c06fb871",
+      "title": "test",
+      "description": "test",
+      "withAlarm": true,
+      "timestamp": 1730448780000
+    },
+    {
+      "id": "c26b51fb-c39e-4216-b435-316bbdd8b7b5",
+      "title": "test",
+      "description": "tessst",
+      "withAlarm": true,
+      "timestamp": 1727068920000
+    }
+  ],
+  "tags": [
+    {
+      "id": "63ff1316-37ed-48d0-b083-9f567c7147a4",
+      "name": "test tag",
+      "description": "asdfasdf",
+      "color": "#FCC521"
+    },
+    {
+      "id": "c9498573-97e5-4d8b-a3d1-0ec3c6fedad6",
+      "name": "long name for tag",
+      "description": "detailed description",
+      "color": "#333333"
+    }
+  ]
+}
