@@ -10,7 +10,7 @@
 
 ## Запуск в режиме разработки
 
-Запустить `ng start` для запуска сервера разработки. Перейти к `http://localhost:4200/`. Приложение автоматически перезагрузится, если будут изменены исходные файлы.
+Запустить `npm start` для запуска сервера разработки. Перейти к `http://localhost:4200/`. Приложение автоматически перезагрузится, если будут изменены исходные файлы.
 
 ## Сборка проекта
 
@@ -23,7 +23,7 @@ For start project you need to have Node.js installed (^18.19.1 || ^20.11.1 || ^2
 
 ## Development server
 
-Run `ng start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Build
 
